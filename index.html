@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Gallery Focus jQuery experiment</title>
+	<link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+	<script src="jquery.galleryFocus.js"></script>
+	<script>$(function(){
+		var examples = $('#examples img');
+		examples.galleryFocus();
+		
+		examples.toggle(function(){
+			$(this).addClass('ggg');
+		}, function(){
+			$(this).removeClass('ggg');
+		});
+
+		$('#controls input').change(function(){
+			var action = $(this).attr('id');
+			
+			switch(action){
+				case 'c-overlay': {
+					if($(this).is(':checked')){
+						examples.galleryFocus('overlay', true);
+					} else {
+						examples.galleryFocus('overlay', false);
+					}
+				} break;
+				
+				case 'c-radius': {
+					var value = $(this).attr('value');
+					examples.galleryFocus('set', 'radius', value);
+				} break;
+				
+				case 'c-fadeTo': {
+					var value = $(this).attr('value');
+					examples.galleryFocus('set', 'fadeTo', value);
+				} break;
+				
+				case 'c-invert': {
+					var value = $(this).is(':checked');
+					examples.galleryFocus('set', 'invert', value);
+				} break;
+				
+			}
+		});
+		
+	});</script>
+</head>
+<body>
+	<div class="wrapper">
+
+		<div id="header">
+			<h1>$.galleryFocus()</h1>
+			<p class="tag-line">A jQuery plugin that fades html elements based on their proximity to the cursor</p>
+			
+			<div id="nav">
+				<a href="#about">Usage</a>
+				<a href="#examples">Demos</a>
+				<a href="#">Download</a>
+			</div>
+		</div>
+		
+	
+		<div id="gallery">
+			
+			<div class="page" id="examples">
+				
+				<div id="controls">
+					<label for="c-overlay">overlay</label><input type="checkbox" name="c-overlay" id="c-overlay" value="" />
+					<label for="c-invert">invert</label><input type="checkbox" name="c-invert" id="c-invert" value="" />
+					<label for="c-radius">radius</label><input type="text" name="c-radius" id="c-radius" value="400" />
+					<label for="c-fadeTo">fadeTo</label><input type="text" name="c-fadeTo" id="c-fadeTo" value="0.2" />
+				</div>
+				
+				<img src="http://placekitten.com/101/80"><img src="http://placekitten.com/101/85"><img src="http://placekitten.com/101/82">
+				<img src="http://placekitten.com/102/80"><img src="http://placekitten.com/102/85"><img src="http://placekitten.com/102/82">
+				<img src="http://placekitten.com/103/80"><img src="http://placekitten.com/102/85"><img src="http://placekitten.com/103/82">
+				<img src="http://placekitten.com/104/81"><img src="http://placekitten.com/103/85"><img src="http://placekitten.com/g/104/82">
+				<img src="http://placekitten.com/105/80"><img src="http://placekitten.com/104/85"><img src="http://placekitten.com/g/105/82">
+				<img src="http://placekitten.com/106/80"><img src="http://placekitten.com/105/85"><img src="http://placekitten.com/106/82">
+				<img src="http://placekitten.com/107/80"><img src="http://placekitten.com/106/85"><img src="http://placekitten.com/107/82">
+				<img src="http://placekitten.com/108/82"><img src="http://placekitten.com/107/85"><img src="http://placekitten.com/108/82">
+				<img src="http://placekitten.com/109/80"><img src="http://placekitten.com/108/85"><img src="http://placekitten.com/109/82">
+				<img src="http://placekitten.com/g/101/81"><img src="http://placekitten.com/101/88"><img src="http://placekitten.com/g/101/80">
+				<img src="http://placekitten.com/g/102/81"><img src="http://placekitten.com/102/88"><img src="http://placekitten.com/102/80">
+				<img src="http://placekitten.com/g/103/81"><img src="http://placekitten.com/103/88"><img src="http://placekitten.com/103/80">
+				<img src="http://placekitten.com/g/104/81"><img src="http://placekitten.com/104/88"><img src="http://placekitten.com/104/81">
+				<img src="http://placekitten.com/g/105/81"><img src="http://placekitten.com/105/88"><img src="http://placekitten.com/g/105/80">
+				<img src="http://placekitten.com/g/106/81"><img src="http://placekitten.com/106/88"><img src="http://placekitten.com/106/80">
+				<img src="http://placekitten.com/g/107/81"><img src="http://placekitten.com/107/88"><img src="http://placekitten.com/107/80">
+			</div>
+		
+		</div>
+		
+	</div>
+	
+	<div id="createdBy">
+		jquery.galleryFocus created by <a href="http://twitter.com/derekanderson" title="Follow Me!">Derek Anderson</a> // <a href="http://mediaupstream.com" title="Savvy Web Design &amp; Development">Media Upstream</a><br />
+		
+		Placeholder kittens thanks to <a href="http://placekitten.com/" title="Can Haz Placekitteh">{placekitten}</a><br />
+		
+	</div>
+</body>
+</html>
