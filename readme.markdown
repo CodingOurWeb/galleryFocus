@@ -9,26 +9,18 @@ A jQuery plugin that fades html elements based on their proximity to a source
     `$('#gallery img').galleryFocus();`
 
 
-### OPTIONS
+### OPTIONS    
+    // 'radius' - default: 400 - set the source radius size
+    // 'fadeTo' - default: 0.2 - the min/max value to fade elements to depending on the value of 'invert'
+    // 'source' - default: 'cursor' - if set to a class or ID the source will be the center of that DOM element
+    // 'invert' - default: false - Inverts the direction in which elements fade from the 'source'  
+    // 'overlay' - default: false - displays an overlay to visualize the 'source' influence
 
     $('#gallery img').galleryFocus({
-      // 'radius' - default: 400 - set the source radius size
       'radius': 800,
-      
-      // 'fadeTo' - default: 0.2 - the min/max value to fade elements to
-      // depending on the value of 'invert'
       'fadeTo': 0.0,
-      
-      // 'source' - default: 'cursor' - if set to a class or ID
-      // the source will be the center of that DOM element
       'source': '#source-div',
-      
-      // 'invert' - default: false - Inverts the direction in which elements
-      // fade from the 'source'  
       'invert': true,
-      
-      // 'overlay' - default: false - displays an overlay to visualize the 
-      // 'source' influence
       'overlay': true
     });
 
