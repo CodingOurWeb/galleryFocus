@@ -61,7 +61,7 @@
 		$('.page').hide();
 		
 		// page links
-		$('#nav a').click(function(){
+		$('#nav a').not(':last-child').click(function(){
 			$('#nav a').removeClass('active');
 			$(this).addClass('active');
 			// switch page
@@ -86,7 +86,7 @@
 			<div id="nav">
 				<a href="#demo">Demo</a>
 				<a href="#usage">Usage</a>
-				<a href="#">Download</a>
+				<a href="https://github.com/mediaupstream/galleryFocus">Download</a>
 			</div>
 		</div>
 		

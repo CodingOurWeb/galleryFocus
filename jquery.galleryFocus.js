@@ -1,6 +1,6 @@
 /*
 galleryFocus v0.1 - http://mediaupstream.com/sandbox/gallery-focus
-by Derek Anderson - http://med iaupstream.com
+by Derek Anderson - http://mediaupstream.com
 
 To use this plugin:  
 - Include jQuery and this file in your document
