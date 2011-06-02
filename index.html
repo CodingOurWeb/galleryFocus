@@ -3,18 +3,19 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Gallery Focus jQuery experiment</title>
+	<link rel="shortcut icon" href="favicon.png">
 	<link href='http://fonts.googleapis.com/css?family=Josefin+Sans:400' rel='stylesheet' type='text/css'>
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
 	<script src="jquery.galleryFocus.js"></script>
 	<script>$(function(){
-		var examples = $('#examples img');
-		examples.galleryFocus();
+		var demo = $('#demo img');
+		demo.galleryFocus();
 		
-		examples.toggle(function(){
+		demo.click(function(){
+			$('.ggg').removeClass('ggg');
 			$(this).addClass('ggg');
-		}, function(){
-			$(this).removeClass('ggg');
+			demo.galleryFocus('update');
 		});
 
 		$('#controls input').change(function(){
@@ -23,29 +24,55 @@
 			switch(action){
 				case 'c-overlay': {
 					if($(this).is(':checked')){
-						examples.galleryFocus('overlay', true);
+						demo.galleryFocus('overlay', true);
 					} else {
-						examples.galleryFocus('overlay', false);
+						demo.galleryFocus('overlay', false);
 					}
 				} break;
 				
 				case 'c-radius': {
 					var value = $(this).attr('value');
-					examples.galleryFocus('set', 'radius', value);
+					demo.galleryFocus('set', 'radius', value);
 				} break;
 				
 				case 'c-fadeTo': {
 					var value = $(this).attr('value');
-					examples.galleryFocus('set', 'fadeTo', value);
+					demo.galleryFocus('set', 'fadeTo', value);
 				} break;
 				
 				case 'c-invert': {
 					var value = $(this).is(':checked');
-					examples.galleryFocus('set', 'invert', value);
+					demo.galleryFocus('set', 'invert', value);
 				} break;
 				
+				case 'c-cursor': {
+					
+					if($(this).is(':checked')){
+						$('#source-hint').fadeOut();
+						demo.galleryFocus('source', 'cursor');
+					} else {
+						$('#source-hint').fadeIn();
+						demo.galleryFocus('source', '.ggg');
+					}
+					
+				} break;
 			}
 		});
+		$('.page').hide();
+		
+		// page links
+		$('#nav a').click(function(){
+			$('#nav a').removeClass('active');
+			$(this).addClass('active');
+			// switch page
+			var page = $(this).attr('href');
+			$('.page').hide();
+			$(page).delay(200).show();
+			
+			return false;
+		});
+		
+		$('#nav a:first-child').trigger('click');
 		
 	});</script>
 </head>
@@ -54,25 +81,32 @@
 
 		<div id="header">
 			<h1>$.galleryFocus()</h1>
-			<p class="tag-line">A jQuery plugin that fades html elements based on their proximity to the cursor</p>
+			<p class="tag-line">A jQuery plugin that fades html elements based on their proximity to a source <small>(cursor or DOM)</small></p>
 			
 			<div id="nav">
-				<a href="#about">Usage</a>
-				<a href="#examples">Demos</a>
+				<a href="#demo">Demo</a>
+				<a href="#usage">Usage</a>
 				<a href="#">Download</a>
 			</div>
 		</div>
 		
 	
 		<div id="gallery">
+			<div class="page" id="usage">
+				<script src="https://gist.github.com/1003983.js?file=gistfile1.js"></script>
+			</div>
 			
-			<div class="page" id="examples">
+			<div class="page" id="demo">
 				
 				<div id="controls">
 					<label for="c-overlay">overlay</label><input type="checkbox" name="c-overlay" id="c-overlay" value="" />
 					<label for="c-invert">invert</label><input type="checkbox" name="c-invert" id="c-invert" value="" />
 					<label for="c-radius">radius</label><input type="text" name="c-radius" id="c-radius" value="400" />
 					<label for="c-fadeTo">fadeTo</label><input type="text" name="c-fadeTo" id="c-fadeTo" value="0.2" />
+					<label for="c-cursor">follow cursor</label><input type="checkbox" name="c-cursor" checked="checked" id="c-cursor" value="true" />
+					
+					<small id="source-hint">click an image to set it as the 'source'</small>
+					
 				</div>
 				
 				<img src="http://placekitten.com/101/80"><img src="http://placekitten.com/101/85"><img src="http://placekitten.com/101/82">
@@ -81,7 +115,7 @@
 				<img src="http://placekitten.com/104/81"><img src="http://placekitten.com/103/85"><img src="http://placekitten.com/g/104/82">
 				<img src="http://placekitten.com/105/80"><img src="http://placekitten.com/104/85"><img src="http://placekitten.com/g/105/82">
 				<img src="http://placekitten.com/106/80"><img src="http://placekitten.com/105/85"><img src="http://placekitten.com/106/82">
-				<img src="http://placekitten.com/107/80"><img src="http://placekitten.com/106/85"><img src="http://placekitten.com/107/82">
+				<img src="http://placekitten.com/107/80"><img src="http://placekitten.com/106/85" class="ggg"><img src="http://placekitten.com/107/82">
 				<img src="http://placekitten.com/108/82"><img src="http://placekitten.com/107/85"><img src="http://placekitten.com/108/82">
 				<img src="http://placekitten.com/109/80"><img src="http://placekitten.com/108/85"><img src="http://placekitten.com/109/82">
 				<img src="http://placekitten.com/g/101/81"><img src="http://placekitten.com/101/88"><img src="http://placekitten.com/g/101/80">

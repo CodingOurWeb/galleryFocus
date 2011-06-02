@@ -57,6 +57,25 @@ table{
 a { text-decoration:none; }
 /* ------------------------- */
 
+/* -- GIST moded stylesheet */
+.gist .gist-file .gist-data {
+	font-size:80% !important;
+	background-color: #fff !important;
+	border:0px solid #fff !important;
+}
+.gist-syntax .cm { color:#9FAB3B !important; }
+.gist-syntax .s1 { color:#21759B !important }
+.gist-syntax .c1 { color:#aaa !important;}
+.gist .gist-file {
+  border: 0px solid #fff !important;
+}
+.gist-meta {
+	font-size:70% !important;
+	background-color: #fff !important;
+	border-top:1px solid #E6E2AF;
+}
+/* -- end GIST mod */
+
 
 html, body {
 	background-color: #eee;
@@ -87,6 +106,10 @@ p {
 p.tag-line {
 	text-shadow:1px 1px 1px #fff;
 }
+p.tag-line small {
+	font-size:12px;
+	color:#444;
+}
 
 
 .wrapper {
@@ -113,7 +136,8 @@ p.tag-line {
 	font-size:18px;
 	text-decoration:none;
 	color:#20749A;
-
+	position:relative;
+	
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 	-khtml-border-radius: 2px;
@@ -123,9 +147,35 @@ p.tag-line {
 	-o-transition: 			color 0.3s ease-out;
 	-webkit-transition: color 0.3s ease-out;
 }
-#nav a:hover {
+#nav a:hover, #nav a.active {
 	color:#5D0958;
 	background-color: #fff !important;
+}
+#nav a.active:after {
+	content:"";
+	display:block;
+	width:10px;
+	height:10px;
+	background-color: #fff;
+	position:absolute;
+	z-index:900;
+	bottom:-15px;
+	left:44%;
+	-moz-border-radius: 	 20px;
+	-webkit-border-radius: 20px;
+	border-radius: 				 20px;
+	
+	-moz-transition: 		opacity 0.3s ease-out;
+	-o-transition: 			opacity 0.3s ease-out;
+	-webkit-transition: opacity 0.3s ease-out;
+}
+
+
+#source-hint {
+	display:none;
+	font-size:12px;
+	color:#3B5A74;
+	text-shadow:0px -1px 0px #fff;
 }
 
 #controls {
@@ -181,14 +231,14 @@ input[type="text"] {
 	border-radius: 2px;
 }
 
-#examples img {
+#demo img {
 	width:100px;
 	height:80px;
 	overflow:hidden;
 	margin:0 11px 11px 0;
 	border:1px solid #fff;
 }
-.ggg { opacity:1.0 !important;}
+/*.ggg { opacity:1.0 !important;}*/
 
 
 #createdBy {
