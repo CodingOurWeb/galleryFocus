@@ -1,6 +1,6 @@
 galleryFocus
 ==============
-A jQuery plugin that fades html elements based on their proximity to a source
+A jQuery plugin that fades html elements based on their proximity to a source  
 *by Derek Anderson - http://mediaupstream.com*
 
 
